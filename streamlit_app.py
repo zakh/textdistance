@@ -30,7 +30,7 @@ form = st.form(key='my_form')
 current = form.text_input(label='Enter your current job title:')
 desired = form.text_input(label='Enter your desired job title:')
 skills = form.multislect('select your relevant skills:', ['writing email', 'event planning', 'writing spreadseets', 'care management', 'lesson planning'])  
-submit_button = form.form_submit_button(label='Submit')
+submitted = st.form_submit_button("Submit")
 
 
   
