@@ -42,6 +42,7 @@ with st.form("my_form"):
          presence_penalty=0
       )
       st.write(response)
+      st.write(response["model"]["choices"][0]["text"])
 
 
   
