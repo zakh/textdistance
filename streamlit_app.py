@@ -27,8 +27,8 @@ Generate an imperfect cover letter using the options below:
 
 with st.form("my_form"):
    st.write("Inside the form")
-   current = form.text_input(label='Enter your current job title:')
-   desired = form.text_input(label='Enter your desired job title:')
+   current = st.text_input(label='Enter your current job title:')
+   desired = st.text_input(label='Enter your desired job title:')
 
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
