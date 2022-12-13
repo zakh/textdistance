@@ -34,16 +34,14 @@ with st.form("my_form"):
    if submitted:
       response = openai.Completion.create(
          model="text-davinci-003",
-         prompt="Write a complete cover letter which is two paragraphs long. The cover letter is for a person named '" + name + "' who currently has the job title '" + current + "' and who is applying a job with the job title '" + desired + "'. In the cover letter, mention three skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and explain why each skill is relevant to both job titles.",
+         prompt="Write a complete cover letter which is two paragraphs long. The cover letter is for a person named '" + name + "' who currently has the job title '" + current + "' and who is applying a job with the job title '" + desired + "'. In the cover letter, mention three skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and explain why each skill is relevant to both job titles. Format the cover letter with html.",
          temperature=0.7,
          max_tokens=512,
          top_p=1,
          frequency_penalty=0,
          presence_penalty=0
       )
-      st.write(response)
-      st.write(response["model"]["choices"][0]["text"])
-
+      st.write(response["choices"][0]["text"])
 
   
  
