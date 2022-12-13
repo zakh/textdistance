@@ -34,12 +34,12 @@ with st.form("my_form"):
    if submitted:
       response = openai.Completion.create(
          model="text-davinci-003",
-         prompt="Suggest eight skills which are shared by people with the job titles '" + current + "' and '" + desired + "'"
+         prompt="Suggest eight skills which are shared by people with the job titles '" + current + "' and '" + desired + "'",
          temperature=0.7,
          max_tokens=256,
          top_p=1,
          frequency_penalty=0,
-          presence_penalty=0
+         presence_penalty=0
       )
       st.write(response)
 
