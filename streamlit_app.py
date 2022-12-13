@@ -29,13 +29,9 @@ Generate an imperfect cover letter using the options below:
 with st.echo(code_location='below'):
 
 with st.form("my_form"):
-  option = st.selectbox(
-     'Select your current job title:',
-    ('Product Manager', 'Engineer', 'UX Designer', 'Elementary School Teacher', 'Office Administrator', 'Homecare Nurse'))
-
-  option = st.selectbox(
-     'Select your desired job title:',
-    ('Product Manager', 'Engineer', 'UX Designer', 'Elementary School Teacher', 'Office Administrator', 'Homecare Nurse'))
-
+  option = st.selectbox('Select your current job title:', ('Product Manager', 'Engineer', 'UX Designer', 'Elementary School Teacher', 'Office Administrator', 'Homecare Nurse'))
+  option = st.selectbox('Select your desired job title:',('Product Manager', 'Engineer', 'UX Designer', 'Elementary School Teacher', 'Office Administrator', 'Homecare Nurse'))
   option = st.multiselect('select your relevant skills:', ['writing email', 'event planning', 'writing spreadseets', 'care management', 'lesson planning'])  
   submitted = st.form_submit_button("Submit")
+  
+ 
