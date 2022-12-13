@@ -41,7 +41,7 @@ with st.form("my_form"):
          frequency_penalty=0,
          presence_penalty=0
       )
-      st.write(response["text"])
+      st.write(response)
 
 
   
