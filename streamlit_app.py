@@ -3,7 +3,7 @@ import openai
 
 import streamlit as st
 
-#openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 #response = openai.Completion.create(
 #  model="text-davinci-003",
@@ -29,11 +29,19 @@ with st.form("my_form"):
    st.write("Inside the form")
    current = st.text_input(label='Enter your current job title:')
    desired = st.text_input(label='Enter your desired job title:')
-
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
    if submitted:
-       st.write("current", current, "desired", desired)
+      response = openai.Completion.create(
+         model="text-davinci-003",
+         prompt="Suggest eight skills which are shared by people with the job titles '" + current + "' and '" + desired + "'"
+         temperature=0.7,
+         max_tokens=256,
+         top_p=1,
+         frequency_penalty=0,
+          presence_penalty=0
+      )
+      st.write(response)
 
 st.write("Outside the form")
 
