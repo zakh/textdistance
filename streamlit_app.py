@@ -34,7 +34,7 @@ with st.form("my_form"):
    if submitted:
       response = openai.Completion.create(
          model="text-davinci-003",
-         prompt="Suggest eight skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and provide explanations for each suggestion. Respond in the form of a json key value array where each suggested skill is a key and each explanation is a value.",
+         prompt="Suggest eight skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and explain why each skill is relevant to both job titles. Respond in the form of a json key value array where each suggested skill is a key and each explanation is a value.",
          temperature=0.7,
          max_tokens=256,
          top_p=1,
