@@ -25,12 +25,19 @@ import streamlit as st
 Generate an imperfect cover letter using the options below:
 """
 
+form = st.form("my_form")
+form.slider("Inside the form")
+st.slider("Outside the form")
 
-form = st.form(key='my_form')
-current = form.text_input(label='Enter your current job title:')
-desired = form.text_input(label='Enter your desired job title:')
-skills = form.multislect('select your relevant skills:', ['writing email', 'event planning', 'writing spreadseets', 'care management', 'lesson planning'])  
-submitted = st.form_submit_button("Submit")
+# Now add a submit button to the form:
+form.form_submit_button("Submit")
+
+
+#form = st.form(key='my_form')
+#current = form.text_input(label='Enter your current job title:')
+#desired = form.text_input(label='Enter your desired job title:')
+#skills = form.multislect('select your relevant skills:', ['writing email', 'event planning', 'writing spreadseets', 'care management', 'lesson planning'])  
+#submitted = st.form_submit_button("Submit")
 
 
   
