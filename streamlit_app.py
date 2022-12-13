@@ -27,6 +27,7 @@ Generate an imperfect cover letter using the options below:
 
 with st.form("my_form"):
    st.write("Inside the form")
+   name = st.text_input(label='Enter your name:')
    current = st.text_input(label='Enter your current job title:')
    desired = st.text_input(label='Enter your desired job title:')
    # Every form must have a submit button.
@@ -34,7 +35,7 @@ with st.form("my_form"):
    if submitted:
       response = openai.Completion.create(
          model="text-davinci-003",
-         prompt="Suggest eight skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and explain why each skill is relevant to both job titles. Respond in the form of a json key value array where each suggested skill is a key and each explanation is a value.",
+         prompt="Write a cover letter with three paragraphs each between three and five sentences long which is for a person named " + name + " who currently has the job title '" + current + "' and who is applying a job with the job title '" + desired "'. In the cover letter, mention three skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and explain why each skill is relevant to both job titles.",
          temperature=0.7,
          max_tokens=256,
          top_p=1,
@@ -43,7 +44,7 @@ with st.form("my_form"):
       )
       st.write(response)
 
-st.write("Outside the form")
+
 
   
  
