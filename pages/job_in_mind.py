@@ -1,4 +1,5 @@
 import streamlit as st
+from switchpage import switch_page
 
 
 
