@@ -9,7 +9,7 @@ with st.form('my_form'):
     st.session_state.strengths = st.multiselect('Choose your top 3 strengths.', strengths, max_selections=3)
     submitted = st.form_submit_button("Continue")
     if submitted:
-        switch_page('strengths')
+        switch_page('years of experience')
 
 
 
