@@ -1,10 +1,6 @@
-age = st.slider('How old are you?', 0, 130, 25)
-st.write("I'm ", age, 'years old')
-
 import os
 import streamlit as st
 from switchpage import switch_page
-
 
 years_of_experience =  (['Less Than One', '1', '2', '3', '4', '5', '6', '7', '8', '9','10+'])
 with st.form('my_form'):
