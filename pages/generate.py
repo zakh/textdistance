@@ -11,6 +11,8 @@ prompt += "who has " + st.session_state.years_of_experience + " years of profess
 prompt += "who most recently had the job title " + st.session_state.recent + ". "
 if st.session_state.job_in_mind=='Yes':
    prompt += "They are applying for a job with the job title of " + st.session_state.desired + ". "
+else:
+   prompt += "They are applying for an unknown job so don't mention the job to which they are applying. "
 if 'skills' in st.session_state and st.session_state.skills:
    prompt += "In the cover letter, mention that they have the following skills: "
    first = True
