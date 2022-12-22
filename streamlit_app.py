@@ -1,6 +1,7 @@
 import os
 import openai
 import streamlit as st
+import streamlit_extras
 from streamlit_extras.switch_page_button import switch_page
 
 
