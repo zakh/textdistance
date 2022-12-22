@@ -2,7 +2,8 @@ import os
 import streamlit as st
 from switchpage import *
 
-
+for key in st.session_state.keys():
+    del st.session_state[key]
 """
 # Imperfect Cover Letter
 
