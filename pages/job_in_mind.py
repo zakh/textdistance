@@ -34,5 +34,5 @@ with st.form('my_form'):
     if submitted:
         if st.session_state.job_in_mind == 'Yes':
             switch_page('top skills for desired job')
-        else
+        else:
             switch_page('strenghts')
