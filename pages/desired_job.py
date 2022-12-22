@@ -1,4 +1,11 @@
+import streamlit as st
+from switchpage import switch_page
 
-   current = st.text_input(label='Enter your current job title:')
-   desired = st.text_input(label='Enter your desired job title:')
-   
+
+
+
+with st.form('my_form'):
+   st.session_state.desired =  st.text_input('Enter your desired job title:')
+   submitted = st.form_submit_button("Continue")
+   if submitted:
+      switch_page('top skills for desired job')
