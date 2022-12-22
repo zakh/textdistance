@@ -13,7 +13,7 @@ if st.session_state.job_in_mind=='Yes':
 if st.session_state.skills:
    prompt += "In the cover letter, mention that they have the following skills: "
    first = True
-   for skill in skills
+   for skill in st.session_state.skills:
       if first:
          prompt += skill
       else:
@@ -26,9 +26,10 @@ if st.session_state.gap=='Yes':
 if st.session_state.strengths:
    prompt += "In the cover letter, mention that they have the following strengths: "
    first = True
-   for skill in skills
+   for strength in st.session_state.strengths:
       if first:
          prompt += skill
+         first = False
       else:
          prompt += ", " + skill
    prompt += " and explain how each strength will apply to the job of " + desired + ". "
