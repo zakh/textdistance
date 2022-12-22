@@ -1,6 +1,6 @@
 import streamlit as st
 from switchpage import switch_page
-
+st.set_page_config(initial_sidebar_state="collapsed")
 
 """
 # Imperfect Cover Letter

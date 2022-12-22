@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from switchpage import switch_page
+st.set_page_config(initial_sidebar_state="collapsed")
 
 years_of_experience =  (['Less Than One', '1', '2', '3', '4', '5', '6', '7', '8', '9','10+'])
 with st.form('my_form'):

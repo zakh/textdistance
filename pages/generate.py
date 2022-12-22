@@ -1,6 +1,7 @@
 import os
 import openai
 import streamlit as st
+st.set_page_config(initial_sidebar_state="collapsed")
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 

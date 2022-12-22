@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from switchpage import switch_page
+st.set_page_config(initial_sidebar_state="collapsed")
 
 
 strengths = ('Collaboration','Communication','Critical Thinking','Customer Service','Decision-Making','Delegation','Innovation','Interpersonal','Leadership','Management','Motivation','Observation','Organization','Planning','Problem-Solving','Team-Building','Teamwork','Time-Management')
