@@ -1,9 +1,5 @@
 import streamlit as st
 
-st.write(st.session_state.name)
-
-
-
 def switch_page(page_name: str):
     from streamlit.runtime.scriptrunner import RerunData, RerunException
     from streamlit.source_util import get_pages
@@ -28,3 +24,15 @@ def switch_page(page_name: str):
 
     raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
 
+
+
+with st.form('my_form'):
+    st.session_state.job_in_mind = st.radio('Do you have a specific job in mind?', ('Yes','No'))
+    if st.session_state.job_in_mind == 'Yes'
+        st.session_state.desired =  st.text_input(label='Enter your desired job title:')
+    submitted = st.form_submit_button("Continue")
+    if submitted:
+        if st.session_state.job_in_mind == 'Yes'
+            switch_page('top skills for desired job')
+        else
+            switch_page('strenghts')
