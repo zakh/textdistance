@@ -32,6 +32,15 @@ with st.form("my_form"):
    language = st.selectbox('Select the language for your cover letter:',('English', 'Mandarin Chinese', 'Hindi', 'Spanish', 'French', 'Standard Arabic', 'Bengali', 'Russian', 'Portuguese', 'Indonesian', 'Urdu', 'Standard German', 'Japanese', 'Swahili', 'Marathi', 'Telugu', 'Western Punjabi', 'Wu Chinese', 'Tamil', 'Turkish', 'Korean', 'Vietnamese', 'Yue Chinese', 'Javanese', 'Italian', 'Egyptian Spoken Arabic', 'Hausa', 'Thai', 'Gujarati', 'Kannada', 'Iranian Persian', 'Bhojpuri', 'Southern Min Chinese', 'Hakka Chinese', 'Jinyu Chinese', 'Filipino', 'Burmese', 'Polish', 'Yoruba', 'Odia', 'Malayalam', 'Xiang Chinese', 'Maithili', 'Ukrainian', 'Moroccan Spoken Arabic', 'Eastern Punjabi', 'Sunda', 'Algerian Spoken Arabic', 'Sundanese Spoken Arabic', 'Nigerian Pidgin', 'Zulu', 'Igbo', 'Amharic', 'Northern Uzbek', 'Sindhi', 'North Levantine Spoken Arabic', 'Nepali', 'Romanian', 'Tagalog', 'Dutch', 'Sa\'idi Spoken Arabic', 'Gan Chinese', 'Northern Pashto', 'Magahi', 'Saraiki', 'Xhosa', 'Malay', 'Khmer', 'Afrikaans', 'Sinhala', 'Somali', 'Chhattisgarhi', 'Cebuano', 'Mesopotamian Spoken Arabic', 'Assamese', 'Northeastern Thai', 'Northern Kurdish', 'Hijazi Spoken Arabic', 'Nigerian Fulfulde', 'Bavarian', 'Bamanankan', 'South Azerbaijani', 'Northern Sotho', 'Setswana', 'Souther Sotho', 'Czech', 'Greek', 'Chittagonian', 'Kazakh', 'Swedish', 'Deccan', 'Hungarian', 'Jula', 'Sadri', 'Kinyarwanda', 'Cameroonian Pidgin', 'Sylheti', 'South Levantine Spoken Arabic', 'Tunisian Spoken Arabic', 'Sanaani Spoken Arabic'), index=0)
    submitted = st.form_submit_button("Submit")
    if submitted:
+      if 'name' not in st.session_state:
+         st.session_state.name = name
+      if 'current' not in st.session_state:
+         st.session_state.name = name
+      if 'desired' not in st.session_state:
+         st.session_state.name = name
+      if 'language' not in st.session_state:
+         st.session_state.name = name
+         
       response = openai.Completion.create(
          model="text-davinci-003",
          prompt="Write a complete cover letter which is two paragraphs long and in the " + language + " language. The cover letter is for a person named '" + name + "' who currently has the job title '" + current + "' and who is applying a job with the job title '" + desired + "'. In the cover letter, mention three skills which are shared by people with the job titles '" + current + "' and '" + desired + "' and explain why each skill is relevant to both job titles.",
@@ -42,6 +51,7 @@ with st.form("my_form"):
          presence_penalty=0
       )
       st.write(response["choices"][0]["text"])
+
 
 
   
