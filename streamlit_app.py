@@ -1,7 +1,7 @@
 import os
 import openai
 import streamlit as st
-import streamlit_extras
+import streamlit_extras as ste
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -32,8 +32,7 @@ with st.form("my_form"):
          st.session_state.desired = desired
       if 'language' not in st.session_state:
          st.session_state.language = language
-      streamlit_extras.switch_page_buton.switch_page("02_page")   
-
+      ste.switch_page_button.switch_page("fssdfs")
 
 
 
