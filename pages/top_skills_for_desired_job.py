@@ -2,7 +2,6 @@ import os
 import openai
 import streamlit as st
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def switch_page(page_name: str):
     from streamlit.runtime.scriptrunner import RerunData, RerunException
@@ -28,9 +27,12 @@ def switch_page(page_name: str):
 
     raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
 
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 response = openai.Completion.create(
    model="text-davinci-003",
-   prompt="Return 13 skills which are related to the job of " + st.session_state.desired + ". Return these skills in the language of " + st.session_state.language + ". Return this skills in the form of a python array.",
+   prompt="Return 13 skills which are related to the job of " + st.session_state.desired + ". Return these skills in the language of " + st.session_state.language + ". Return theses skills in the form of a python array.",
    temperature=0.7,
    max_tokens=512,
    top_p=1,
