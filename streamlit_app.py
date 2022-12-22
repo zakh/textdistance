@@ -53,7 +53,7 @@ with st.form("my_form"):
          st.session_state.desired = desired
       if 'language' not in st.session_state:
          st.session_state.language = language
-      switch_page("02_page")
+      switch_page("generate")
 
 
 
