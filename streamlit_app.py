@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from switchpage import *
+from switchpage import switch_page
 
 for key in st.session_state.keys():
     del st.session_state[key]
