@@ -19,7 +19,7 @@ if 'skills' in st.session_state and st.session_state.skills:
          prompt += skill
       else:
          prompt += ", " + skill
-   prompt += ". In the cover letter, explain how each skill was learned in the job of " + st.session_state.recent + "
+   prompt += ". In the cover letter, explain how each skill was learned in the job of " + st.session_state.recent
    if st.session_state.job_in_mind=='Yes':
       prompt += "and how it will be relevant to the job of " + st.session_state.desired
    else:
