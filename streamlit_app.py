@@ -1,7 +1,9 @@
 import os
 import openai
 import streamlit as st
-from streamlit_extras.stoggle import stoggle
+import streamlit_extras
+
+st.write help(streamlit_extras)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
