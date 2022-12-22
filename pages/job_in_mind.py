@@ -12,4 +12,4 @@ with st.form('my_form'):
         if st.session_state.job_in_mind == 'Yes':
             switch_page('desired_job')
         else:
-            switch_page('strenghts')
+            switch_page('strengths')
