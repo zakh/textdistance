@@ -6,7 +6,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 prompt = "Write a complete cover letter in the " + st.session_state.language + "language "
 prompt += "for a person named " + st.session_state.name + " "
-prompt += "who has " + st.session_state.years_of_experience " years of professional experience."
+prompt += "who has " + st.session_state.years_of_experience + " years of professional experience."
 prompt += "who most recently had the job title " + st.session_state.recent + ". "
 if st.session_state.job_in_mind=='Yes':
    prompt += "They are applying for a job with the job title of " + desired + ". "
