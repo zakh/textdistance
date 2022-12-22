@@ -18,7 +18,7 @@ response = openai.Completion.create(
 )
 with st.form('my_form'):
     skills = response["choices"][0]["text"].split(",")
-    st.session_state.skills = st.multiselect('Choose your top 3 ,job skills for the ' + st.session_state.desired + ' position.', skills, max_selections=3)
+    st.session_state.skills = st.multiselect('Choose your top 3 job skills for the ' + st.session_state.desired + ' position.', skills, max_selections=3)
     submitted = st.form_submit_button("Continue")
     if submitted:
         switch_page('strengths')
