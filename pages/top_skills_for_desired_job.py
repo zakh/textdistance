@@ -3,6 +3,7 @@ import openai
 import streamlit as st
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
 def switch_page(page_name: str):
     from streamlit.runtime.scriptrunner import RerunData, RerunException
     from streamlit.source_util import get_pages
@@ -29,7 +30,7 @@ def switch_page(page_name: str):
 
 response = openai.Completion.create(
    model="text-davinci-003",
-   prompt="Return 13 skills which are related to the job of " + desired + ". Return these skills in the language of " + st.session_state.language + ". Return this skills in the form of a python array.",
+   prompt="Return 13 skills which are related to the job of " + st.session_state.desired + ". Return these skills in the language of " + st.session_state.language + ". Return this skills in the form of a python array.",
    temperature=0.7,
    max_tokens=512,
    top_p=1,
