@@ -2,8 +2,10 @@ import os
 import openai
 import streamlit as st
 import streamlit_extras
-
-st.write(dir(streamlit_extras))
+from inspect import getmembers, isfunction
+    
+functions_list = getmembers(streamlit_extras, isfunction)
+st.write(functions_list))
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
