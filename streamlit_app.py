@@ -1,9 +1,7 @@
 import os
 import openai
 import streamlit as st
-import streamlit_extras
 from streamlit_extras.switch_page_button import switch_page
-
 
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
