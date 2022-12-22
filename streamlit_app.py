@@ -42,6 +42,9 @@ with st.form("my_form"):
          presence_penalty=0
       )
       st.write(response["choices"][0]["text"])
+      with st.form("my_form_2"):
+         name2 = st.text_input(label='sfs')
+         submitted2 = st.form_submit_button("Submit")
 
   
  
