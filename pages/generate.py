@@ -28,10 +28,10 @@ if st.session_state.strengths:
    first = True
    for strength in st.session_state.strengths:
       if first:
-         prompt += skill
+         prompt += strength
          first = False
       else:
-         prompt += ", " + skill
+         prompt += ", " + strength
    prompt += " and explain how each strength will apply to the job of " + st.session_state.desired + ". "
 prompt += "Write the cover letter in a tone of voice which is " + st.session_state.working_style + ". "
 
