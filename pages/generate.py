@@ -19,9 +19,17 @@ if 'skills' in st.session_state and st.session_state.skills:
          prompt += skill
       else:
          prompt += ", " + skill
-   prompt += ". In the cover letter, explain how each skill was learned in the job of " + st.session_state.recent + " and how it will be relevant to the job of " + st.session_state.desired + ". "
+   prompt += ". In the cover letter, explain how each skill was learned in the job of " + st.session_state.recent + "
+   if st.session_state.job_in_mind=='Yes':
+      prompt += "and how it will be relevant to the job of " + st.session_state.desired
+   else:
+      prompt += ". "
 else: 
-   prompt += "In the cover letter, mention three ways that their experience in the job of " + st.session_state.recent + " has prepared them for the job of " + st.session_state.desired + ". "
+   prompt += "In the cover letter, mention three ways that their experience in the job of " + st.session_state.recent + " has prepared them"
+   if st.session_state.job_in_mind=='Yes':
+      prompt += "for the job of " + st.session_state.desired
+   else:
+      prompt+= ". "
 if st.session_state.gap=='Yes':
    prompt += "Explain that they have a gap in their work history because of " + st.session_state.gap_explanation + ". "
 if st.session_state.strengths:
