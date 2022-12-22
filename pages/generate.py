@@ -22,7 +22,7 @@ if st.session_state.skills:
 else: 
    prompt += "In the cover letter, mention three ways that their experience in the job of " + recent + " has prepared them for the job of " + desired + ". "
 if st.session_state.gap=='Yes':
-   prompt += "Explain that they have a gap in their work history because of " + explanation_of_gap ". "
+   prompt += "Explain that they have a gap in their work history because of " + explanation_of_gap + ". "
 if st.session_state.strengths:
    prompt += "In the cover letter, mention that they have the following strengths: "
    first = True
