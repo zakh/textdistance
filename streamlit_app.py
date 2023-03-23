@@ -24,7 +24,7 @@ def main():
 
     if job_title:
         normalized_job_title = normalize_string(job_title)
-        strings = read_strings_from_file("job_titles.txt")
+        strings = read_strings_from_file("jobtitles.txt")
         closest_strings = find_closest_strings(normalized_job_title, strings)
 
         st.header("Results:")
