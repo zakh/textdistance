@@ -32,7 +32,7 @@ def main():
             if similarity == 1:
                 st.write(f"**Exact match:** {string}")
             else:
-                st.write(f"{string} (Similarity: {similarity:.2f})")
+                st.write(f"Did you mean: {string}? (Similarity: {similarity:.2f})")
 
 if __name__ == "__main__":
     main()
