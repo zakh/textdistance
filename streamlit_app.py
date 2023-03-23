@@ -1,22 +1,59 @@
 import streamlit as st
-from switchpage import switch_page
-st.set_page_config(initial_sidebar_state="collapsed")
+import textdistance
+import re
+
+def read_strings_from_file(filename):
+    with open(filename, 'r') as file:
+        strings = [line.strip() for line in file.readlines()]
+    return strings
+
+def normalize_string(input_string):
+    input_string = input_string.lower()
+    input_string = input_string.replace('-', ' ')
+    input_string = re.sub(r'[^a-z0-9\s]', '', input_string)
+    return input_string
+
+def find_closest_string(input_string, strings):
+    max_similarity = -1
+    closest_string = None
+    
+    for string in strings:
+        similarity = textdistance.jaro_winkler(input_string, string)
+        if similarity > max_similarity:
+            max_similarity = similarity
+            closest_string = string
+    
+    return closest_string, max_similarity
+
+
+
 
 """
-# Imperfect Cover Letter
+# did you mean job title
 
 
 
-Generate an imperfect cover letter using the options below:
+Enter a job title: 
 """
 
 with st.form('my_form'):
-    st.session_state.name = st.text_input('Enter your name:')
-    st.session_state.skin = st.radio('Let\'s start with your template. You can always change this later.',('Contempo','Pacific','Whitespace'))
-    st.session_state.language = st.selectbox('Select the language for your cover letter:',('English', 'Mandarin Chinese', 'Hindi', 'Spanish', 'French', 'Standard Arabic', 'Bengali', 'Russian', 'Portuguese', 'Indonesian', 'Urdu', 'Standard German', 'Japanese', 'Swahili', 'Marathi', 'Telugu', 'Western Punjabi', 'Wu Chinese', 'Tamil', 'Turkish', 'Korean', 'Vietnamese', 'Yue Chinese', 'Javanese', 'Italian', 'Egyptian Spoken Arabic', 'Hausa', 'Thai', 'Gujarati', 'Kannada', 'Iranian Persian', 'Bhojpuri', 'Southern Min Chinese', 'Hakka Chinese', 'Jinyu Chinese', 'Filipino', 'Burmese', 'Polish', 'Yoruba', 'Odia', 'Malayalam', 'Xiang Chinese', 'Maithili', 'Ukrainian', 'Moroccan Spoken Arabic', 'Eastern Punjabi', 'Sunda', 'Algerian Spoken Arabic', 'Sundanese Spoken Arabic', 'Nigerian Pidgin', 'Zulu', 'Igbo', 'Amharic', 'Northern Uzbek', 'Sindhi', 'North Levantine Spoken Arabic', 'Nepali', 'Romanian', 'Tagalog', 'Dutch', 'Sa\'idi Spoken Arabic', 'Gan Chinese', 'Northern Pashto', 'Magahi', 'Saraiki', 'Xhosa', 'Malay', 'Khmer', 'Afrikaans', 'Sinhala', 'Somali', 'Chhattisgarhi', 'Cebuano', 'Mesopotamian Spoken Arabic', 'Assamese', 'Northeastern Thai', 'Northern Kurdish', 'Hijazi Spoken Arabic', 'Nigerian Fulfulde', 'Bavarian', 'Bamanankan', 'South Azerbaijani', 'Northern Sotho', 'Setswana', 'Souther Sotho', 'Czech', 'Greek', 'Chittagonian', 'Kazakh', 'Swedish', 'Deccan', 'Hungarian', 'Jula', 'Sadri', 'Kinyarwanda', 'Cameroonian Pidgin', 'Sylheti', 'South Levantine Spoken Arabic', 'Tunisian Spoken Arabic', 'Sanaani Spoken Arabic'), index=0)
-    submitted = st.form_submit_button("Continue")
+    st.session_state.jobtitle = st.text_input('Enter a job title:')
+    submitted = st.form_submit_button("Search")
     if submitted:
-        switch_page('job in mind')
+        input_string = st.jobtitle
+    input_string = normalize_string(input_string)
+    strings = read_strings_from_file("jobtitles.txt")
+    
+    closest_string, max_similarity = find_closest_string(input_string, strings)
+    
+    if max_similarity == 1:
+        st.write("Exact match found: {closest_string}")
+    else:
+        st.write("Did you mean '{closest_string}'?")
+       
+        
+        
+        
 
 
 
