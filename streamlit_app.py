@@ -13,33 +13,26 @@ def normalize_string(input_string):
     input_string = re.sub(r'[^a-z0-9\s]', '', input_string)
     return input_string
 
-def find_closest_string(input_string, strings):
-    max_similarity = -1
-    closest_string = None
-    
-    for string in strings:
-        similarity = textdistance.jaro_winkler(input_string, string)
-        if similarity > max_similarity:
-            max_similarity = similarity
-            closest_string = string
-    
-    return closest_string, max_similarity
+def find_closest_strings(input_string, strings, num_matches=5):
+    similarities = [(string, textdistance.jaro_winkler(input_string, string)) for string in strings]
+    sorted_similarities = sorted(similarities, key=lambda x: x[1], reverse=True)
+    return sorted_similarities[:num_matches]
 
+def main():
+    st.title("Job Title Matcher")
+    job_title = st.text_input("Enter a job title:")
 
+    if job_title:
+        normalized_job_title = normalize_string(job_title)
+        strings = read_strings_from_file("job_titles.txt")
+        closest_strings = find_closest_strings(normalized_job_title, strings)
 
+        st.header("Results:")
+        for string, similarity in closest_strings:
+            if similarity == 1:
+                st.write(f"**Exact match:** {string}")
+            else:
+                st.write(f"{string} (Similarity: {similarity:.2f})")
 
-
-
-"""
-# did you mean job title
-
-
-
-Enter a job title: 
-"""
-
-
-  
- 
-
-
+if __name__ == "__main__":
+    main()
