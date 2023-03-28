@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_typeahead import st_typeahead
 import textdistance
 import re
 
@@ -20,19 +21,21 @@ def find_closest_strings(input_string, strings, num_matches=5):
 
 def main():
     st.title("Job Title Matcher")
-    job_title = st.text_input("Enter a job title:")
 
-    if job_title:
-        normalized_job_title = normalize_string(job_title)
-        strings = read_strings_from_file("jobtitles.txt")
-        closest_strings = find_closest_strings(normalized_job_title, strings)
+    job_titles = read_strings_from_file("jobtitles.txt")
+    selected_job_title = st_typeahead(
+        "Enter a job title:",
+        options=job_titles,
+        max_options=5,
+        callback=find_closest_strings,
+        debounce_time=200,
+        min_chars=2,
+        placeholder="Start typing a job title...",
+    )
 
-        st.header("Results:")
-        for string, similarity in closest_strings:
-            if similarity == 1:
-                st.write(f"**Exact match:** {string}")
-            else:
-                st.write(f"Did you mean: {string}? (Similarity: {similarity:.2f})")
+    if selected_job_title:
+        st.header("Selected Job Title:")
+        st.write(selected_job_title)
 
 if __name__ == "__main__":
     main()
